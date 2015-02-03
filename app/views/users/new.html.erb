@@ -1,0 +1,19 @@
+<h1>Register user</h1>
+<%= render 'shared/error_messages' C%>
+<%= form_for @user do |f| %>
+  <div> 
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+  <div> 
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div> 
+    <%= f.label :userpassword %>
+    <%= f.text_field :userpassword %>
+  </div>
+  <div> 
+    <%= f.submit "Register" %>
+  </div>
+<% end %>
