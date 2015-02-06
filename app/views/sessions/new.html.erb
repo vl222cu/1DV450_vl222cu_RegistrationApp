@@ -1,0 +1,21 @@
+<h1>Sign in</h1>
+<%= render 'shared/flash_messages' %>
+<%= form_tag(login_path, method: "post") do %>
+
+	<div>
+    <%= label_tag(:email, "Email: ") %>
+    <%= email_field_tag(:email) %>
+	</div>
+
+	<div>
+		<%= label_tag(:password, "Password")  %>
+		<%= password_field_tag(:password) %>
+	</div>
+
+	<div>
+		<%= submit_tag("Log in") %>
+	</div>
+
+	<%= link_to "Register", new_user_path %>
+
+<% end %>
