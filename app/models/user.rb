@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_one :api_key
-  has_secure_password
+
+  before_save { self.email = email.downcase }
 
   validates :email, presence: true, uniqueness: true, email_format: { message: "doesn't look like an email address" }
-  validates :password, presence: true
+  
+  has_secure_password
 end

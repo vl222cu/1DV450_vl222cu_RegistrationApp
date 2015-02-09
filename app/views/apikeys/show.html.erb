@@ -1,7 +1,11 @@
+<% content_for :title, "Logged in" %>
+<% content_for :screenname, current_user.email %>
+<%= link_to "Logout", logout_path%>
+<br />
 <h1>Din API-nyckel</h1>
   <div>
     <p>Din API-nyckel är: <%= @key %><p> 
   </div>
 
-<%= link_to "Logout", logout_path%>
+
 

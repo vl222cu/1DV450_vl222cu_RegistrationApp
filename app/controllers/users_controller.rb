@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_user, only: [:show]
   
   def new
     @user = User.new
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      session[:userid] = @user.id
+      log_in @user
       redirect_to apikey_path
     else
       render 'new'

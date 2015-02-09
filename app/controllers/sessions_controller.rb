@@ -1,20 +1,24 @@
 class SessionsController < ApplicationController
+
+  def new
+  end
   
   def create
-    user = User.find_by_email( params[:email] )
+    user = User.find_by(email: params[:session][:email].downcase)
     
-    if user && user.authenticate( params[:password] )
-      session[:userid] = user.id
+    if user && user.authenticate(params[:session][:password])
+      log_in user
       redirect_to apikey_path
     else
-      flash[:notice] = "Login failed!";
-      redirect_to root_path 
+      flash.now[:danger] = "Invalid email/password combination"
+      render 'new'
     end
   end
   
-  def logout
-    session[:userid] = nil
-    redirect_to root_path, notice: "Logged out"
+  def destroy
+    log_out
+    flash[:info] = "Thanks for the visit, welcome back!"
+    redirect_to root_path
   end
 end
  

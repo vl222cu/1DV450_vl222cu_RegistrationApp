@@ -15,12 +15,12 @@ Rails.application.routes.draw do
   
   root to: 'sessions#new'
   
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create]
   
   get 'apikeys', to: 'apikeys#show',    as: :apikey
   
   post 'login',  to: 'sessions#create', as: :login
-  get  'logout',  to: 'sessions#logout',    as: :logout
+  get  'logout',  to: 'sessions#destroy',    as: :logout
 
   # Example resource route with options:
   #   resources :products do
