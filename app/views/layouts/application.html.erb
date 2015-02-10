@@ -11,7 +11,8 @@
     <% if is_logged_in? %>
     <div class="alert alert-success" role="alert">Logged in as <%= yield(:screenname) %></div>
     <% end %>
-<%= yield %>
+    <%= yield %>
+    <%= render 'shared/footer' %>
   </div>
 </body>
 </html>
