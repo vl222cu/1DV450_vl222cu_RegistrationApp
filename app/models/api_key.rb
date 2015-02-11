@@ -12,7 +12,7 @@ class ApiKey < ActiveRecord::Base
   
   def generate_api_key
     begin
-      self.key = SecureRandom.hex(20)
+      self.key = SecureRandom.hex
     end while self.class.exists?(key: key)
   end
 end

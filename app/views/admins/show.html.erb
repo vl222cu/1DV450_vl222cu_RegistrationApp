@@ -1,0 +1,23 @@
+<% content_for :title, "Admin - Logged in" %>
+<%= link_to "Logout", admin_logout_path%>
+<br />
+
+<div>
+  <h2>User accounts and API-keys</h2>
+  <table class="table table-hover">
+      <th>
+          <tr>
+              <th>E-mail</th>
+              <th>API-key</th>
+              <th></th>
+          </tr>
+      </th>
+          <% @users.each do |user| %>  
+              <tr>
+                <td><%= user.email %></td>
+                <td><%= user.api_key.key %></td>
+                <td><%= link_to "Delete", admin_destroy_user_path(user), method: :delete,  data: {confirm: 'User will be deleted, are you sure you want to proceed?'}, class: "btn btn-danger"%></td>
+              </tr>
+          <% end %>
+    </table>
+</div>

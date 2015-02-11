@@ -1,0 +1,27 @@
+<% content_for :title, "Welcome Admin - Sign in" %>
+
+<div class="center jumbotron">
+  <h1 class="text-center">Welcome Admin!</h1>
+  <h3 class="text-center">Do sign in to view all user accounts</h3>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'shared/flash_messages' %>
+    <p><%= link_to "Register", new_user_path %> |
+      <%= link_to "User Login", root_path %></p>
+    <br />
+    <br />
+    <%= form_for(:session, url: admin_logged_in_path) do |f| %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username, class: "form-control" %>
+
+      <%= f.label :password  %>
+      <%= f.password_field :password, class: "form-control" %>
+
+      <br />
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+    
+  </div>
+</div>
