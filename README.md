@@ -24,7 +24,7 @@
 
 ###Admin
 
-> Username: Vivsan
+> Username: Admin
 
 > Password: Password
 
