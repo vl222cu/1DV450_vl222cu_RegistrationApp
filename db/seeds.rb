@@ -6,9 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Admin.delete_all
+admin = Admin.create(username: "Admin", password: "Password", password_confirmation: "Password")
+
 User.delete_all
-user1 = User.create(email: 'vivsan@testar.se', password: 'lammet', password_confirmation: 'lammet')
-user2 = User.create(email: 'vivi@testar.com', password: 'hejhej', password_confirmation: 'hejhej')
+user1 = User.create(email: "vivsan@testar.se", password: "lammet", password_confirmation: "lammet")
+user2 = User.create(email: "vivi@testar.com", password: "hejhej", password_confirmation: "hejhej")
 
 ApiKey.delete_all
 key1 = ApiKey.new
