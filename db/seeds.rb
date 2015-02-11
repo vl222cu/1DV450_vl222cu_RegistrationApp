@@ -7,4 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.delete_all
-User.create(email: 'vivisan@testar.se', password: 'hejhejhej', password_confirmation: 'hejhejhej')
+user1 = User.create(email: 'vivsan@testar.se', password: 'lammet', password_confirmation: 'lammet')
+user2 = User.create(email: 'vivi@testar.com', password: 'hejhej', password_confirmation: 'hejhej')
+
+ApiKey.delete_all
+key1 = ApiKey.new
+key2 = ApiKey.new
+
+user1.api_key = key1
+user2.api_key = key2
