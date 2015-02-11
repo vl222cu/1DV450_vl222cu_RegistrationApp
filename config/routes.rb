@@ -19,17 +19,18 @@ Rails.application.routes.draw do
   resources :admins
   
   
-  get 'apikeys', to: 'apikeys#show',    as: :apikey
+  get   'apikeys',      to: 'apikeys#show',     as: :apikey
 
-  post 'login', to: 'sessions#create', as: :login
+  post  'login',        to: 'sessions#create',  as: :login
+  get   'logout',       to: 'sessions#destroy', as: :logout
   
-  get 'admin_login', to: 'admins#new', as: :admin_login
-  post 'admin_login', to: 'admins#create', as: :admin_logged_in
-  get 'admin_show', to: 'admins#show', as: :admin_show
-  get  'logout',  to: 'sessions#destroy',    as: :logout
-  get 'admin_logout', to: 'admins#destroy', as: :admin_logout
+  get   'admin_login',  to: 'admins#new',       as: :admin_login
+  post  'admin_login',  to: 'admins#create',    as: :admin_logged_in
+  get   'admin_show',   to: 'admins#show',      as: :admin_show
+  get   'admin_logout', to: 'admins#destroy',   as: :admin_logout
   
-  get  'users/destroy', to: 'users#destroy', as: :users_destroy
+  get   'users/:id',    to: 'users#destroy',    as: :users_destroy
+  
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   
   # Example resource route with options:

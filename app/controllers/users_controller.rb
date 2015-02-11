@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_user, only: [:destroy]
+  before_action :check_user, only: [:show]
+  before_action :check_admin, only: [:show]
   
   def new
     @user = User.new
@@ -19,10 +20,15 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    user = User.find_by(id: session[:user_id]).destroy
-    log_out
-    flash[:warning] = "Your account and API-key has been deleted."
-    redirect_to root_path
+    @user = User.find(params[:id])
+    @user.destroy
+    if is_admin_logged_in?
+      flash[:success] = "Successfully deleted the user's account and API-key."
+      redirect_to admin_login_path
+    else
+      flash[:warning] = "Your account and API-key has been deleted."
+      redirect_to root_path
+    end
   end
   
   private
