@@ -1,7 +1,8 @@
 class AdminsController < ApplicationController
-  before_action :check_admin, only: [:delete]
-  before_action :check_user, only: [:delete]
+  before_action :check_admin, only: [:show]
 
+
+ 
   def new
   end
   

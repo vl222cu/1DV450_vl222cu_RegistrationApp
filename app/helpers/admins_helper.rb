@@ -19,6 +19,7 @@ module AdminsHelper
   
   def check_admin
     unless is_admin_logged_in?
+      log_out
       flash[:danger] = "Do log in!"
       redirect_to root_path
      end
