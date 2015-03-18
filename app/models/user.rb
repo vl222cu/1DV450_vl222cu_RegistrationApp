@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_one :api_key
+  has_one :api_key, dependent: :destroy
 
   before_save { self.email = email.downcase }
 
